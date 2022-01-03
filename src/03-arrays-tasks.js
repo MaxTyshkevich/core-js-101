@@ -35,15 +35,11 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-  const arr = [];
-  let currentNumber = 1;
-  let index = 0;
-  while (index < len) {
-    arr.push(currentNumber);
-    currentNumber += 2;
-    index += 1;
-  }
-  return arr;
+  let cur = -1;
+  return Array.from({ length: len }, () => {
+    cur += 2;
+    return cur;
+  });
 }
 
 /**

@@ -73,8 +73,6 @@ function isLeapYear(date) {
  */
 function timeSpanToString(/* startDate, endDate */) {
   throw new Error('Not implemented');
-  /*  const date = new Date(Date.now(endDate) - Date.now(startDate));
-  return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}`; */
 }
 
 /**
