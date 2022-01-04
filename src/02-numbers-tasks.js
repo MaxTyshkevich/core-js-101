@@ -124,6 +124,9 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  */
 function getLastDigit(/* value */) {
   throw new Error('Not implemented');
+  /*   const n = String(parseInt(value));
+  const len = n.length;
+  return +n[len - 1]; */
 }
 
 /**
@@ -177,6 +180,7 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  */
 function roundToPowerOfTen(/* num, pow */) {
   throw new Error('Not implemented');
+  /*  return Math.round(num / 10 ** pow); */
 }
 
 /**
@@ -196,8 +200,11 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  for (let i = 2; i <= Math.sqrt(n); i += 1) {
+    if (!(n % i)) return false;
+  }
+  return true;
 }
 
 /**
