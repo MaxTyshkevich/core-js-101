@@ -198,8 +198,31 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  let viewRect = '';
+  for (let row = 1; row <= height; row += 1) {
+    let line = '';
+    for (let colm = 1; colm <= width; colm += 1) {
+      if (row === 1 && colm === 1) {
+        line += '┌';
+      } else if (row === 1 && colm === width) {
+        line += '┐';
+      } else if (row === height && colm === 1) {
+        line += '└';
+      } else if (row === height && colm === width) {
+        line += '┘';
+      } else if (row === 1 || row === height) {
+        line += '─';
+      } else if (colm === 1 || colm === width) {
+        line += '│';
+      } else {
+        line += ' ';
+      }
+    }
+
+    viewRect += `${line}\n`;
+  }
+  return viewRect;
 }
 
 /**
@@ -218,8 +241,30 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const alphavite = 'abcdefghijklmnopqrstuvwxyz';
+  return str
+    .split('')
+    .map((letter) => {
+      let big = false;
+      const SmallLetter = letter.toLocaleLowerCase();
+      let index = alphavite.indexOf(SmallLetter);
+
+      if (index === -1) return letter;
+
+      if (SmallLetter !== letter) {
+        big = true;
+      }
+      if (index + 13 >= alphavite.length) {
+        index = index + 13 - alphavite.length;
+      } else {
+        index += 13;
+      }
+
+      const splitLetter = alphavite[index];
+      return big ? splitLetter.toUpperCase() : splitLetter;
+    })
+    .join('');
 }
 
 /**
@@ -263,8 +308,12 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const cards = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  return cards.indexOf(value);
 }
 
 module.exports = {
