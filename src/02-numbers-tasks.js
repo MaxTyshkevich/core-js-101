@@ -111,6 +111,7 @@ function getLinearEquationRoot(/* a , b */) {
  */
 function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
   throw new Error('Not implemented');
+  /* return Math.atan2(Math.abs(y2) - Math.abs(y1), Math.abs(x2) - Math.abs(x1)); */
 }
 
 /**
@@ -180,7 +181,7 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  return Math.round(num / 10 ** pow) * (10 ** pow);
+  return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
 /**
