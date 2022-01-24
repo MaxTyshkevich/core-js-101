@@ -102,6 +102,15 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(/* func, attempts */) {
+  /*   let count = 0;
+  return function wrapper() {
+    try {
+      return attempts ;
+    } catch (e) {
+      count += 1;
+      return wrapper();
+    }
+  }; */
   throw new Error('Not implemented');
 }
 
@@ -129,7 +138,7 @@ function retry(/* func, attempts */) {
  *
  */
 function logger(/* func, logFunc */) {
-/*   return function f(n) {
+  /*   return function f(n) {
     return logFunc.call(null, func.call(null, n));
   }; */
   throw new Error('Not implemented');
